@@ -5,7 +5,7 @@ class Student{
 		this.fullName = name;
 		this.course = course;
 		this.university = university;
-		this.mar = [3, 3, 4, 5];
+		this.mar = [4, 3, 4, 5];
 		this.student = true;
 	}
 	
@@ -40,7 +40,7 @@ class Student{
 		this.mar.forEach(el =>{
 			sum += el;
 		})
-		console.log(sum);
+	
 		return sum / this.mar.length;
 	} else{
 		return null;
@@ -58,8 +58,10 @@ class Student{
 const student = new Student('Максим Деревецький', '1', 'ЛНУ');
 console.log(student.getInfo('Максим Деревецький'));
 console.log('Оцінки Максима Древецького', student.marks);
+
 student.addMarkFirsStudent = (prompt('Write the mark'));
-console.log(student.getAverage());
+console.log('Середній бал', student.getAverage());
+const marksF = student.mar;
 
 student.dismiss();
 console.log(student.marks);
@@ -67,6 +69,38 @@ student.addMarkFirsStudent = (prompt('Write the mark'));
 console.log(student.marks);
 student.recover();
 console.log(student.marks);
+class BudgetStudent extends Student{
+	constructor(mar, name, course, university){
+		super(mar, name, course, university);
+		this.mar = mar;
+		
+	}
+	getScholarship(){
+		if(this.getAverage() >= 4.0){
+		let i = 1;
+			setTimeout(() =>{	
+				
+		console.log('Ви' + ' ' + 'отимали' + ' ' + '1400' + ' ' + 'грн.' + ' ' + 'стипендії');
+		
+		if(i <= 3){
+		this.getScholarship();
+		
+		}
+	}
+
+	, 30000)
+	} else{
+		console.log('Sorry, your average mark is too low');
+	}	
+
+	}
+}
+	
+const budgetStudent = new BudgetStudent(marksF, 'Максим Деревецький', '1', 'ЛНУ');
+
+budgetStudent.getScholarship();
+
+
 
 
 
