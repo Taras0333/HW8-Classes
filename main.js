@@ -80,7 +80,7 @@ class BudgetStudent extends Student{
 		let i = 1;
 			setTimeout(() =>{	
 				
-		console.log('Ви' + ' ' + 'отимали' + ' ' + '1400' + ' ' + 'грн.' + ' ' + 'стипендії');
+		console.log('Ви' + ' ' + 'отримали' + ' ' + '1400' + ' ' + 'грн.' + ' ' + 'стипендії');
 		
 		if(i <= 3){
 		this.getScholarship();
