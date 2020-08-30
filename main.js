@@ -1,4 +1,4 @@
-
+const mark = 4.0;
 const studentMarks = [3, 3, 4, 5];
 class Student{
 	constructor(name, course, university){
@@ -17,14 +17,14 @@ class Student{
 
 }
 	get marks(){
-		if (this.student === true) {
+		if (this.student) {
 			return this.mar;
 		} else{
 			return null;
 		}
 		
 	}
-	set addMarkFirsStudent(mark){
+	set marks(mark){
 		if(this.student === true){
 		this.mar.push(+mark);
 		console.log('Виправлені оцінки Максима Древецького:', this.mar);
@@ -59,7 +59,7 @@ const student = new Student('Максим Деревецький', '1', 'ЛНУ'
 console.log(student.getInfo('Максим Деревецький'));
 console.log('Оцінки Максима Древецького', student.marks);
 
-student.addMarkFirsStudent = (prompt('Write the mark'));
+student.marks = (prompt('Write the mark'));
 console.log('Середній бал', student.getAverage());
 const marksF = student.mar;
 
@@ -75,27 +75,20 @@ class BudgetStudent extends Student{
 		this.mar = mar;
 		
 	}
-	getScholarship(){
-		if(this.getAverage() >= 4.0){
-		let i = 1;
-			setTimeout(() =>{	
-				
-		console.log('Ви' + ' ' + 'отримали' + ' ' + '1400' + ' ' + 'грн.' + ' ' + 'стипендії');
-		
-		if(i <= 3){
-		this.getScholarship();
-		
-		}
-	}
 
-	, 30000)
+	getScholarship(){
+		if(this.getAverage() >= mark){
+			console.log('Ви' + ' ' + 'отримали' + ' ' + '1400' + ' ' + 'грн.' + ' ' + 'стипендії');
 	} else{
 		console.log('Sorry, your average mark is too low');
 	}	
 
 	}
 }
-	
+setInterval(() => {
+	budgetStudent.getScholarship();
+}, 30000)
+
 const budgetStudent = new BudgetStudent(marksF, 'Максим Деревецький', '1', 'ЛНУ');
 
 budgetStudent.getScholarship();
